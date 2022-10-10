@@ -52,14 +52,18 @@ class App extends Component {
     })
   }
 
+  removerComentario = comentario => {
+    let lista = this.state.comentarios
+    lista = lista.filter(c => c !== comentario)
+    this.setState({comentario: lista})
+  }
+
   digitacaoDoCampo = evento =>{
     const valor = evento.target.value
     const campo = evento.target.name
 
     this.setState({novoComentario: {...this.state.novoComentario, [campo]: valor}})
   }
-
-
 
   render(){
     return (
@@ -72,8 +76,9 @@ class App extends Component {
         nome={comentario.nome} 
         email={comentario.email} 
         data={comentario.data} 
-        msg={comentario.mensagem}>
-        </Comentario>
+        msg={comentario.mensagem}
+        onRemove={this.removerComentario.bind(this, comentario)}
+        />
       ))}
 
       <form method='post' onSubmit={this.adicionarComentario}>
