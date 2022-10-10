@@ -2,10 +2,12 @@ import react from 'react';
 import './Comentario.css';
 
 //JSX
-const Comentario = () => (
+const Comentario = props => (
     <div className="Comentario">
-        <div>João</div>
-        <div>Olá, tudo bem?</div>
+        <h2>{props.nome}</h2>
+        <p>{props.email}</p>
+        <p>{props.msg}</p>
+        <p>{props.data.toString()}</p>
     </div>
 );
 
